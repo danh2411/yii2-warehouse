@@ -24,7 +24,6 @@ class WarehouseController extends Controller
             'container' =>$data['container'],
             'receiving'=>$data['receiving'],
             'styno'=>$data['styleno'],
-          
             'uom'=>$data['uom'],
              'prefix'=>$data['prefix'],
             'sufix'=>$data['sufix'],
@@ -66,7 +65,7 @@ class WarehouseController extends Controller
             Yii::$app->redis->set($row['id'],  $temp); 
           
             $mess='them thanh cong!!';
-            return $this->render('index',['mess' =>$mess]);
+            return $this->render('index',['mess' =>$mess,'var' =>$var]);
       
         
     }

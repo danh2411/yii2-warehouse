@@ -187,3 +187,38 @@
 2022/08/07 11:27:00 [notice] 1#1: start worker process 32
 2022/08/07 11:27:00 [notice] 1#1: start worker process 33
 2022/08/07 11:27:00 [notice] 1#1: start worker process 34
+2022/08/07 13:27:15 [notice] 32#32: signal 15 (SIGTERM) received, exiting
+2022/08/07 13:27:15 [notice] 32#32: exiting
+2022/08/07 13:27:15 [notice] 1#1: signal 15 (SIGTERM) received, exiting
+2022/08/07 13:27:15 [notice] 32#32: exit
+2022/08/07 13:27:15 [notice] 33#33: exiting
+2022/08/07 13:27:15 [notice] 31#31: signal 15 (SIGTERM) received, exiting
+2022/08/07 13:27:15 [notice] 33#33: exit
+2022/08/07 13:27:15 [notice] 31#31: exiting
+2022/08/07 13:27:15 [notice] 31#31: exit
+2022/08/07 13:27:15 [notice] 34#34: exiting
+2022/08/07 13:27:15 [notice] 34#34: signal 15 (SIGTERM) received, exiting
+2022/08/07 13:27:15 [notice] 34#34: exit
+2022/08/07 13:27:15 [notice] 33#33: signal 15 (SIGTERM) received, exiting
+2022/08/07 13:27:15 [notice] 1#1: signal 14 (SIGALRM) received
+2022/08/07 13:27:15 [notice] 1#1: signal 14 (SIGALRM) received
+2022/08/07 13:27:16 [notice] 1#1: signal 17 (SIGCHLD) received from 33
+2022/08/07 13:27:16 [notice] 1#1: worker process 33 exited with code 0
+2022/08/07 13:27:16 [notice] 1#1: signal 29 (SIGIO) received
+2022/08/07 13:27:16 [notice] 1#1: signal 17 (SIGCHLD) received from 32
+2022/08/07 13:27:16 [notice] 1#1: worker process 31 exited with code 0
+2022/08/07 13:27:16 [notice] 1#1: worker process 32 exited with code 0
+2022/08/07 13:27:16 [notice] 1#1: signal 29 (SIGIO) received
+2022/08/07 13:27:16 [notice] 1#1: signal 17 (SIGCHLD) received from 34
+2022/08/07 13:27:16 [notice] 1#1: worker process 34 exited with code 0
+2022/08/07 13:27:16 [notice] 1#1: exit
+2022/08/08 01:29:51 [notice] 1#1: using the "epoll" event method
+2022/08/08 01:29:51 [notice] 1#1: nginx/1.23.1
+2022/08/08 01:29:51 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2022/08/08 01:29:51 [notice] 1#1: OS: Linux 5.4.0-122-generic
+2022/08/08 01:29:51 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:4096
+2022/08/08 01:29:51 [notice] 1#1: start worker processes
+2022/08/08 01:29:51 [notice] 1#1: start worker process 32
+2022/08/08 01:29:51 [notice] 1#1: start worker process 33
+2022/08/08 01:29:51 [notice] 1#1: start worker process 34
+2022/08/08 01:29:51 [notice] 1#1: start worker process 35
