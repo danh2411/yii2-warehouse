@@ -18,12 +18,7 @@ use yii\helpers\Html;
             </div>
 
             <?php  }?>
-            <?php if(isset($errors)){ ?>
-            <div class="alert alert-danger" role="alert">
-                <?php foreach($errors as $key=>$error) {echo $error[0];echo "</br>";} ?>
-            </div>
 
-            <?php  }?>
             <div class="container">
                 <div class="row">
                     <div class="col ">
@@ -36,17 +31,43 @@ use yii\helpers\Html;
                                 <option value="Tokuda">Tokuda</option>
 
                             </select>
+                            <?php if(isset($errors['container']))
+                            {?>
+                            <div class="px-2 text-danger">
+                                <?php  foreach($errors['container'] as $error){echo $error;} ?>
+                            </div>
+
+
+                            <?php }?>
 
                         </div>
                         <div class="input-group input-group-sm mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-sm">Container#:</span>
                             <input type="text" class="form-control" aria-label="Sizing example input" name="container"
                                 id="container" aria-describedby="inputGroup-sizing-sm">
+
+                            <?php if(isset($errors['container']))
+                            {?>
+                            <div class="px-2 text-danger">
+                                <?php  foreach($errors['container'] as $error){echo $error;} ?>
+                            </div>
+
+
+                            <?php }?>
+
                         </div>
                         <div class="input-group input-group-sm mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-sm">Receiving#:</span>
                             <input type="text" class="form-control" aria-label="Sizing example input" name="receiving"
                                 id="receiving" aria-describedby="inputGroup-sizing-sm">
+                            <?php if(isset($errors['receiving']))
+                            {?>
+                            <div class="px-2 text-danger">
+                                <?php  foreach($errors['receiving'] as $error){echo $error;} ?>
+                            </div>
+
+
+                            <?php }?>
                         </div>
 
                     </div>
@@ -59,6 +80,15 @@ use yii\helpers\Html;
                                 <option value="VN-Imperal">VN-Imperal</option>
                                 <option value="LA-Imperal">LA-Imperal</option>
                             </select>
+                            <?php if(isset($errors['measuare']))
+                            {?>
+                            <div class="px-2 text-danger">
+                                <?php  foreach($errors['measuare'] as $error){echo $error;} ?>
+                            </div>
+
+
+                            <?php }?>
+
                         </div>
 
                     </div>
@@ -67,9 +97,18 @@ use yii\helpers\Html;
                             <span class="input-group-text" id="inputGroup-sizing-sm">Date</span>
                             <input type="datetime-local" class="form-control" aria-label="Sizing example input"
                                 name="date" id="date" aria-describedby="inputGroup-sizing-sm">
+
+                        </div>
+                        <?php if(isset($errors['date']))
+                            {?>
+                        <div class="px-2 text-danger">
+                            <?php  foreach($errors['date'] as $error){echo $error;} ?>
                         </div>
 
+
+                        <?php }?>
                     </div>
+
                 </div>
                 <!-- table -->
                 <div id="row">
@@ -158,7 +197,7 @@ use yii\helpers\Html;
                     <input type="button" value="Cancel" id="cancel" />
                 </div>
                 <div id="row">
-                    <a href="">Main Menu</a>
+                    <a href="/warehouse/show">Main Menu</a>
                 </div>
     </form>
     <!-- endsubmit -->

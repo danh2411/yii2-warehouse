@@ -17,19 +17,19 @@ class  WarehouseForm extends ActiveRecord
     {
         return '{{%products}}';
     }
-    // public function rules()
-    // {
-    //     return [
-    //         // the name, email, subject and body attributes are required
-    //         [['vendor','measuare','container','receiving','styno',
-    //           'uom','prefix','sufix','height','width','length','wieght',
-    //           'upc','size1','color1','carton','date'
-    //         ], 'required'],
-    //         [['container','receiving','styno',
-    //         'uom','prefix','sufix','height','width','length','wieght',
-    //         'upc','size1','color1','carton'
-    //       ], 'number'],
+    public function rules()
+    {
+        return [
+            // the name, email, subject and body attributes are required
+            [['vendor','measuare','container','receiving','styno',
+              'uom','prefix','sufix','height','width','length','wieght',
+              'upc','size1','color1','carton','date'
+            ], 'required'],
+            [['container','receiving','styno',
+            'uom','prefix','sufix','height','width','length','wieght',
+            'upc','size1','color1','carton'
+          ], 'number'],
            
-    //     ];
-    // }
+        ];
+    }
 }

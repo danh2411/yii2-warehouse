@@ -18,7 +18,7 @@ class WarehouseController extends Controller
       $model=new WarehouseForm();
 
  
-    if (isset($_POST)) {
+        if (isset($_POST)) {
         $data=Yii::$app->request->post();
       
         $model->vendor=$data['vendor'];
@@ -48,50 +48,63 @@ class WarehouseController extends Controller
        if($model->save())
        {
 
-    //    //redis
-    $model=WarehouseForm::find()->all();
-    foreach ($model as $row)
-    {
-        $temp=array('id ' =>$row['id'],'styno'=>$row['styno'],
-        'measuare'=>$row['measuare'],'container'=>$row['container'],
-        'receiving'=>$row['receiving'],
-        'uom'=>$row['uom'],
-        'prefix'=>$row['prefix'],
-        'sufix'=>$row['sufix'],
-        'height'=>$row['height'],
-        'width'=>$row['width'],
-        'length'=>$row['length'],
-        'wieght'=>$row['wieght'],
-        'upc'=>$row['upc'],
-        'size1'=>$row['size1'],
-        'color1'=>$row['color1'],
-        'size2'=>$row['size2'],
-        'color2'=>$row['color2'],
-        'size3'=>$row['size3'],
-        'color3'=>$row['color3'],
-        'carton'=>$row['carton'],
-        'date'=>$row['date'],
-        )
-        ;
-    }
-  
-Yii::$app->redis->set($row['id'], json_encode($temp));
-    
-        $mess='them thanh cong!!';
-        return $this->render('index',['mess' =>$mess]);}
-        else {
-            $errors = $model->errors;
+         //    //redis
+             $model=WarehouseForm::find()->all();
+                foreach ($model as $row)
+                {
+                    $temp=array('id ' =>$row['id'],'styno'=>$row['styno'],
+                    'measuare'=>$row['measuare'],'container'=>$row['container'],
+                    'receiving'=>$row['receiving'],
+                    'uom'=>$row['uom'],
+                    'prefix'=>$row['prefix'],
+                    'sufix'=>$row['sufix'],
+                    'height'=>$row['height'],
+                    'width'=>$row['width'],
+                    'length'=>$row['length'],
+                    'wieght'=>$row['wieght'],
+                    'upc'=>$row['upc'],
+                    'size1'=>$row['size1'],
+                    'color1'=>$row['color1'],
+                    'size2'=>$row['size2'],
+                    'color2'=>$row['color2'],
+                    'size3'=>$row['size3'],
+                    'color3'=>$row['color3'],
+                    'carton'=>$row['carton'],
+                    'date'=>$row['date'],
+                    )
+                    ;
+                    }
             
+                Yii::$app->redis->set($row['id'], json_encode($temp));
+            
+                $mess='them thanh cong!!';
+                return $this->render('index',['mess' =>$mess]);}
+        else {
+            
+            $errors = $model->errors;
+           
              return $this->render('index',['errors' =>$errors]);
                   }
-    }
-       
+         }
+
         
 }  
+// if(isset($errors['vendor'])){
+//     echo ($errors['vendor']);
+// }
+// public function actionShow(){
     
+//         $datas=Yii::$app->redis->get('115');
+      
+     
+      
+//         $data=(json_decode($datas,true));
+//        var_dump($data);
+//         if($data!=null)
+//             { 
+//                 return $this->render('showDb',['data'=>$data]);
+//             }
+//        }
    
+
 }
-// $da=Yii::$app->db->createCommand()->batchInsert('products',[
-//     'vendor_id'=>$data['vendor'],$data['vendor'],
-//     'styno'=>$data['vendor'],$data['styleno']
-//    ],0)->execute();
