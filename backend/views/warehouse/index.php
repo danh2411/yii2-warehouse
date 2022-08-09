@@ -9,7 +9,7 @@ use yii\helpers\Html;
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
 </script>
 <div class="container">
-    <form action="/warehouse/insert" method="post" enctype="multipart/form-data">
+    <form method="post" action="/warehouse/insert">
 
         <div class="row">
             <?php if(isset($mess)){ ?>
@@ -106,8 +106,10 @@ use yii\helpers\Html;
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php if(isset($var)){
-                                                        foreach($var as $key => $value){?>
+                                                    <?php 
+                                                        //if(isset($var)){
+                                                        //foreach($var as $key => $value){
+                                                            ?>
                                                     <tr>
                                                         <th scope="row"> <?= $value['styno'] ?></th>
                                                         <th scope="row"> <?= $value['uom'] ?></th>
@@ -127,7 +129,7 @@ use yii\helpers\Html;
                                                         <th scope="row"> <?= $value['carton'] ?></th>
 
                                                     </tr>
-                                                    <?php } }?>
+                                                    <?php // } }?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -210,7 +212,7 @@ buttonAdd.onclick = () => {
     let tableRef = document.getElementById("mytable");
     for (let i = 0; i < amountRow.value; i++) {
         const tr = document.createElement('tr');
-
+        tr.setAttribute('class', 'tr');
         for (let index = 0; index < 16; index++) {
             const td = document.createElement('td');
             const input = document.createElement('input')
@@ -220,7 +222,6 @@ buttonAdd.onclick = () => {
             tr.appendChild(td)
         }
         tableRef.appendChild(tr)
-        tableRef.insertRow(-1)
     }
 
 }
@@ -235,21 +236,20 @@ buttonRemove.onclick = function() {
 
 // const buttonSubmit = document.getElementById("submit");
 // buttonSubmit.onclick = () => {
-//     e.preventDefault();
 //     // const  vendor = document.getElementsByClassName("styleno").value
-//     let styleno = document.getElementsById("styleno0").value
-//     console.log(styleno);
-//     $.ajax({
-//         type: "POST",
-//         url: "/warehouse/insert", // nhập link của trang xử lí dữ liệu
-//         data: "vendor=" + vendor + "&styleno=" + styleno,
-//         success: function(data) {
-//             setTimeout(function() {
-//                 $('.message_box').html(data);
-//             }, delay);
-//             location.reload();
-//         }
-//     });
+//     // let styleno = document.getElementsById("styleno0").value
+//     // console.log(styleno);
+//     // $.ajax({
+//     //     type: "POST",
+//     //     url: "/warehouse/insert", // nhập link của trang xử lí dữ liệu
+//     //     data: "vendor=" + vendor + "&styleno=" + styleno,
+//     //     success: function(data) {
+//     //         setTimeout(function() {
+//     //             $('.message_box').html(data);
+//     //         }, delay);
+//     //         location.reload();
+//     //     }
+//     // });
 
 // };
 </script>

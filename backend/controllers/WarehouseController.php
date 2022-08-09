@@ -52,21 +52,30 @@ class WarehouseController extends Controller
     $model=WarehouseForm::find()->all();
     foreach ($model as $row)
     {
-        $temp='id:'.$row['id'].'||'.'vendor:'.$row['vendor'].'||'.
-        'measuare:'.$row['measuare'].'||'.'container:'.$row['container'].'||'.
-        'receiving:'.$row['receiving'].'||'.'styno:'.$row['styno'].'||'.
-        'uom:'.$row['uom'].'||'.'prefix:'.$row['prefix'].'||'.
-        'sufix:'.$row['sufix'].'||'.'height:'.$row['height'].'||'.
-        'width:'.$row['width'].'||'.'length:'.$row['length'].'||'.
-        'wieght:'.$row['wieght'].'||'.'upc:'.$row['upc'].'||'.
-        'size1:'.$row['size1'].'||'.'color1:'.$row['color1'].'||'.
-        'size2:'.$row['size2'].'||'.'color2:'.$row['color2'].'||'.
-        'size3:'.$row['size3'].'||'.'color3:'.$row['color3'].'||'.
-        'carton:'.$row['carton'].'||'.'date'.$row['date']
+        $temp=array('id ' =>$row['id'],'styno'=>$row['styno'],
+        'measuare'=>$row['measuare'],'container'=>$row['container'],
+        'receiving'=>$row['receiving'],
+        'uom'=>$row['uom'],
+        'prefix'=>$row['prefix'],
+        'sufix'=>$row['sufix'],
+        'height'=>$row['height'],
+        'width'=>$row['width'],
+        'length'=>$row['length'],
+        'wieght'=>$row['wieght'],
+        'upc'=>$row['upc'],
+        'size1'=>$row['size1'],
+        'color1'=>$row['color1'],
+        'size2'=>$row['size2'],
+        'color2'=>$row['color2'],
+        'size3'=>$row['size3'],
+        'color3'=>$row['color3'],
+        'carton'=>$row['carton'],
+        'date'=>$row['date'],
+        )
         ;
     }
   
-Yii::$app->redis->set($row['id'], $temp);
+Yii::$app->redis->set($row['id'], json_encode($temp));
     
         $mess='them thanh cong!!';
         return $this->render('index',['mess' =>$mess]);}
