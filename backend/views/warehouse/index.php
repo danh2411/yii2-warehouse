@@ -1,3 +1,6 @@
+<?php
+use yii\helpers\Html;
+?>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -15,6 +18,12 @@
             </div>
 
             <?php  }?>
+            <?php if(isset($errors)){ ?>
+            <div class="alert alert-danger" role="alert">
+                <?php foreach($errors as $key=>$error) {echo $error[0];echo "</br>";} ?>
+            </div>
+
+            <?php  }?>
             <div class="container">
                 <div class="row">
                     <div class="col ">
@@ -25,8 +34,9 @@
                                 <option value="Victory_Aicraft">Victory Aicraft</option>
                                 <option value="Maria_Ozawa">Maria Ozawa</option>
                                 <option value="Tokuda">Tokuda</option>
-                                <?php  var_dump($var); ?>
+
                             </select>
+
                         </div>
                         <div class="input-group input-group-sm mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-sm">Container#:</span>
@@ -43,7 +53,7 @@
                     <div class="col">
                         <div class="input-group input-group-sm mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-sm">MeasurementSystem:</span>
-                            <select id="measurementSystem" name="measurementSystem">
+                            <select id="measuare" name="measuare">
                                 <option value="US-Imperal">US-Imperal</option>
                                 <option value="JP-Imperal">JP-Imperal</option>
                                 <option value="VN-Imperal">VN-Imperal</option>
@@ -137,7 +147,7 @@
                 <!-- submit -->
                 <div id="row">
                     <input type="button" value="Add" id="btn-add">
-                    <input type="text" id="amountRow" />
+                    <input type="text" id="amountRow" name="amountRow" />
                     <label for="">#row</label>
 
                 </div>
@@ -157,14 +167,14 @@
 </div>
 <script>
 const someThing = [
-    'styleno',
+    'styno',
     'uom',
     'prefix',
     'sufix',
     'height',
     'width',
-    'lenght',
-    'weight',
+    'length',
+    'wieght',
     'upc',
     'size1',
     'color1',
