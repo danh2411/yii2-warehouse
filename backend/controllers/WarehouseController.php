@@ -92,7 +92,7 @@ class WarehouseController extends Controller
 // if(isset($errors['vendor'])){
 //     echo ($errors['vendor']);
 // }
-// public function actionShow(){
+ public function actionShow(){
     
 //         $datas=Yii::$app->redis->get('115');
       
@@ -104,7 +104,8 @@ class WarehouseController extends Controller
 //             { 
 //                 return $this->render('showDb',['data'=>$data]);
 //             }
-//        }
+return $this->render('showDb');
+       }
    
 
 }

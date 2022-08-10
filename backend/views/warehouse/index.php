@@ -121,61 +121,40 @@ use yii\helpers\Html;
 
                                     <div class="card-body p-0">
                                         <div id="w0" class="gridview table-responsive">
-                                            <table class=" table-bordered" id="mytable">
+                                            <table id="myTable">
 
                                                 <thead>
-                                                    <tr>
-                                                        <th class="text-red " scope="col ">STYLE NO</th>
-                                                        <th class="text-red" scope="col">UOM</th>
-                                                        <th class="text-red" scope="col">PREFIX</th>
-                                                        <th class="text-red" class="text-red" scope="col">SUFIX</th>
-                                                        <th class="text-red" scope="col">HEIGHT#</th>
-                                                        <th class="text-red" scope="col">WIDTH</th>
-                                                        <th class="text-red" scope="col">LENGTH</th>
-                                                        <th class="text-red" scope="col">WEIGHT</th>
-                                                        <th class="text-red" scope="col">UPC</th>
-                                                        <th class="text-red" scope="col">SIZE1</th>
-                                                        <th class="text-red" scope="col">COLOR1</th>
-                                                        <th scope="col">SIZE2</th>
-                                                        <th scope="col">COLOR2</th>
-                                                        <th scope="col">SIZE3</th>
-                                                        <th scope="col">COLOR3</th>
-                                                        <th class="text-red" scope="col">#CARTON</th>
 
-                                                    </tr>
+                                                    <th class="text-red " scope="col ">STYLE NO</th>
+                                                    <th class="text-red" scope="col">UOM</th>
+                                                    <th class="text-red" scope="col">PREFIX</th>
+                                                    <th class="text-red" class="text-red" scope="col">SUFIX</th>
+                                                    <th class="text-red" scope="col">HEIGHT#</th>
+                                                    <th class="text-red" scope="col">WIDTH</th>
+                                                    <th class="text-red" scope="col">LENGTH</th>
+                                                    <th class="text-red" scope="col">WEIGHT</th>
+                                                    <th class="text-red" scope="col">UPC</th>
+                                                    <th class="text-red" scope="col">SIZE1</th>
+                                                    <th class="text-red" scope="col">COLOR1</th>
+                                                    <th scope="col">SIZE2</th>
+                                                    <th scope="col">COLOR2</th>
+                                                    <th scope="col">SIZE3</th>
+                                                    <th scope="col">COLOR3</th>
+                                                    <th class="text-red" scope="col">#CARTON</th>
+
+
                                                 </thead>
-                                                <tbody>
-                                                    <?php 
-                                                        //if(isset($var)){
-                                                        //foreach($var as $key => $value){
-                                                            ?>
-                                                    <tr>
-                                                        <th scope="row"> <?= $value['styno'] ?></th>
-                                                        <th scope="row"> <?= $value['uom'] ?></th>
-                                                        <th scope="row"> <?= $value['prefix'] ?></th>
-                                                        <th scope="row"> <?= $value['sufix'] ?></th>
-                                                        <th scope="row"> <?= $value['height'] ?></th>
-                                                        <th scope="row"> <?= $value['width'] ?></th>
-                                                        <th scope="row"> <?= $value['length'] ?></th>
-                                                        <th scope="row"> <?= $value['wieght'] ?></th>
-                                                        <th scope="row"> <?= $value['upc'] ?></th>
-                                                        <th scope="row"> <?= $value['size1'] ?></th>
-                                                        <th scope="row"> <?= $value['color1'] ?></th>
-                                                        <th scope="row"> <?= $value['size2'] ?></th>
-                                                        <th scope="row"> <?= $value['color2'] ?></th>
-                                                        <th scope="row"> <?= $value['size3'] ?></th>
-                                                        <th scope="row"> <?= $value['color3'] ?></th>
-                                                        <th scope="row"> <?= $value['carton'] ?></th>
 
-                                                    </tr>
-                                                    <?php // } }?>
-                                                </tbody>
+                                                <tr>
+
+                                                </tr>
+
                                             </table>
+
                                         </div>
                                     </div>
 
-                                    <div class="card-footer">
-                                    </div>
+
                                 </div>
 
 
@@ -187,7 +166,7 @@ use yii\helpers\Html;
                 <!-- endtable -->
                 <!-- submit -->
                 <div id="row">
-                    <input type="button" value="Add" id="btn-add">
+                    <input type="button" value="Add" id="btn-add" onclick="myFunction()">
                     <input type="text" id="amountRow" name="amountRow" />
                     <label for="">#row</label>
 
@@ -245,24 +224,56 @@ const someThing = [
 //     'carton',
 
 // ]
-const buttonAdd = document.getElementById('btn-add');
-buttonAdd.onclick = () => {
-    const amountRow = document.getElementById('amountRow');
-    let tableRef = document.getElementById("mytable");
-    for (let i = 0; i < amountRow.value; i++) {
-        const tr = document.createElement('tr');
-        tr.setAttribute('class', 'tr');
-        for (let index = 0; index < 16; index++) {
-            const td = document.createElement('td');
-            const input = document.createElement('input')
-            input.setAttribute('name', someThing[index]);
-            // input.setAttribute('id', someThing[index] + [i]);
-            td.appendChild(input)
-            tr.appendChild(td)
-        }
-        tableRef.appendChild(tr)
-    }
+function myFunction() {
+    const someThing = [
+        'styno',
+        'uom',
+        'prefix',
+        'sufix',
+        'height',
+        'width',
+        'length',
+        'wieght',
+        'upc',
+        'size1',
+        'color1',
+        'size2',
+        'color2',
+        'szie3',
+        'color3',
+        'carton',
 
+    ]
+    var table = document.getElementById("myTable")
+    var rowCount = $('#myTable  tr').length;
+
+    const amountRow = document.getElementById('amountRow');
+
+    console.log(rowCount + 'rows');
+    console.log(amountRow.value);
+    if (rowCount <= amountRow.value) {
+        const index = amountRow.value - rowCount
+        console.log(amountRow.value);
+        for (let j = 0; j <= index; j++) {
+            var row = table.insertRow(-1, j);
+
+            for (let i = 0; i < 16; i++) {
+                var cell1 = row.insertCell(i);
+
+                cell1.innerHTML = " <input  name=' " + someThing[i] + j + " ' value=''/>";
+
+            }
+        }
+    }
+    if (rowCount - 1 > amountRow.value) {
+
+        const index = rowCount - amountRow.value
+        console.log(index);
+        if (index != rowCount)
+            var row = table.deleteRow(-1, index);
+
+
+    }
 }
 // buttoncancel
 const buttonRemove = document.getElementById("cancel");

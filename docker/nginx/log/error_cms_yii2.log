@@ -7685,3 +7685,4 @@ $_SERVER = [
     'GLIDE_MAX_IMAGE_SIZE' => '4000000',
     'COMPOSE_CONVERT_WINDOWS_PATHS' => '1',
 ]" while reading upstream, client: 172.20.0.1, server: cms.yii2.local, request: "POST /warehouse/insert HTTP/1.1", upstream: "fastcgi://172.20.0.4:9000", host: "localhost", referrer: "http://localhost/warehouse"
+2022/08/10 01:27:31 [error] 31#31: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.20.0.1, server: cms.yii2.local, request: "GET / HTTP/1.1", upstream: "fastcgi://172.20.0.4:9000", host: "localhost"
