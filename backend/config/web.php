@@ -30,6 +30,7 @@ $config = [
         'cache'         => [
             'class' => 'yii\redis\Cache',
          ],
+      
     ],
     'modules' => [
         'content' => [

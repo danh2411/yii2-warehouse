@@ -176,7 +176,7 @@ use yii\helpers\Html;
                     <input type="button" value="Cancel" id="cancel" />
                 </div>
                 <div id="row">
-                    <a href="/warehouse/show">Main Menu</a>
+                    <a href="/warehouse/show">viewMysql</a>
                 </div>
     </form>
     <!-- endsubmit -->
@@ -186,25 +186,6 @@ use yii\helpers\Html;
 
 </div>
 <script>
-const someThing = [
-    'styno',
-    'uom',
-    'prefix',
-    'sufix',
-    'height',
-    'width',
-    'length',
-    'wieght',
-    'upc',
-    'size1',
-    'color1',
-    'size2',
-    'color2',
-    'szie3',
-    'color3',
-    'carton',
-
-]
 // const idsomeThing = [
 //     'styleno',
 //     'uom',
@@ -245,7 +226,7 @@ function myFunction() {
 
     ]
     var table = document.getElementById("myTable")
-    var rowCount = $('#myTable  tr').length;
+    var rowCount = table.tBodies[0].rows.length;
 
     const amountRow = document.getElementById('amountRow');
 
@@ -253,25 +234,27 @@ function myFunction() {
     console.log(amountRow.value);
     if (rowCount <= amountRow.value) {
         const index = amountRow.value - rowCount
-        console.log(amountRow.value);
+
         for (let j = 0; j <= index; j++) {
             var row = table.insertRow(-1, j);
 
             for (let i = 0; i < 16; i++) {
                 var cell1 = row.insertCell(i);
 
-                cell1.innerHTML = " <input  name=' " + someThing[i] + j + " ' value=''/>";
+                cell1.innerHTML = " <input  name='" + someThing[i] + j + "' value=''/>";
 
             }
         }
     }
     if (rowCount - 1 > amountRow.value) {
 
-        const index = rowCount - amountRow.value
+        const index = rowCount - 1 - amountRow.value
         console.log(index);
-        if (index != rowCount)
-            var row = table.deleteRow(-1, index);
-
+        if (index != rowCount) {
+            for (let i = 0; i < index; i++) {
+                var row = table.deleteRow(-1);
+            }
+        }
 
     }
 }
