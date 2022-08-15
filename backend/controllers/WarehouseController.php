@@ -3,6 +3,7 @@
 namespace backend\controllers;
 use backend\models\RedisWarehouse;
 use backend\models\WarehouseForm;
+use Codeception\Module\Redis;
 use Yii;
 use yii\web\Controller;
 use yii\data\Pagination;
@@ -99,12 +100,10 @@ class WarehouseController extends Controller
 
         
 }  
-// if(isset($errors['vendor'])){
-//     echo ($errors['vendor']);
-// }
+//show mysql
  public function actionShow(){
-    
-  $query = RedisWarehouse::find();
+    $data=new WarehouseForm();
+  $query = WarehouseForm::find()->limit(0,4);
     $countQuery = clone $query;
     $countQuery =  $query->count();
 
@@ -113,9 +112,160 @@ class WarehouseController extends Controller
     $dataProvider = new ActiveDataProvider(['query' => $query,'pagination' => [
         'pageSize' => 5,
     ],]);
-    return $this->render('showDb', ['dataProvider' => $dataProvider, 'pages' => $pages]);
+    return $this->render('showDb', ['dataProvider' => $dataProvider, 'pages' => $pages,'data'=>$data]);
   
+    
        }
-   
+       //show detail mysql
+  public function actionViewmysql($id)
+  {
+        $model = WarehouseForm::find()->where(['id' => $id])->one();
+        if($model==null)
+        {
+          
+            return $this->goBack('show');
+        }
+       
+      
+      return $this->render('viewmysql', ['model' => $model]);
+  }
+  //delete mysql
+ public function actionDeletemysql($id)
+       {
+        $query = WarehouseForm::findOne($id);
+        $query->delete();
+        return $this->goBack('show');
+       }
+    //update mysql
+       public function actionUpdatemysql($id)
+       {
+        $query = WarehouseForm::findOne($id);
+        return $this->render('updatemysql', ['query' => $query]);
+       }
+       public function actionSuccessmysql($id)
+       {
+        $model = WarehouseForm::findOne($id);
+        
+        $data=Yii::$app->request->post();
+        $model->vendor=$data['vendor'];
+         
+        $model->measuare=$data['measuare'];
+        $model->container=$data['container'];
+        $model->receiving=$data['receiving'];
+        $model->styno=$data['styno'];
+  
+        $model->uom=$data['uom'];
+        $model->prefix=$data['prefix'];
+        $model->sufix=$data['sufix'];
+        $model->height=$data['height'];
+        $model->width=$data['width'];
+        $model->length=$data['length'];
+        $model->wieght=$data['wieght'];
+        $model->upc=$data['upc'];
+        $model->size1=$data['size1'];
+        $model->color1=$data['color1'];
+        $model->size2=$data['size2'];
+        $model->color2=$data['color2'];
+        $model->size3=$data['size3'];
+        $model->color3=$data['color3'];
+     
+        $model->carton=$data['carton'];
+        $model->date=$data['date'];
+       
+        $model->update();
+        
+        if ($model->update() !== false) {
+            Yii::$app->session->setFlash('success','Update Success.'.$id);
+            return $this->goBack('show');
+        } else {
+            $errors = $model->errors;
+            $query = WarehouseForm::findOne($id);
+            return $this->render('updatemysql',['errors' =>$errors,'query' => $query,]);
+                 
+        }
+       }
+   //show redis
+   public function actionShowredis(){
+    $data=new RedisWarehouse();
+  $query = RedisWarehouse::find()->limit(0,4);
+    $countQuery = clone $query;
+    $countQuery =  $query->count();
 
+    $pages = new Pagination(['totalCount' => $countQuery]);
+    
+    $dataProvider = new ActiveDataProvider(['query' => $query,'pagination' => [
+        'pageSize' => 5,
+    ],]);
+    return $this->render('redis/showredis', ['dataProvider' => $dataProvider, 'pages' => $pages,'data'=>$data]);
+  
+    
+       }
+       //show details 
+       public function actionViewredis($id)
+       {
+             $model = RedisWarehouse::find()->where(['id' => $id])->one();
+             if($model==null)
+             {
+               
+                 return $this->goBack('showredis');
+             }
+            
+           
+           return $this->render('redis/viewredis', ['model' => $model]);
+       }
+      //delete redis
+ public function actionDeleteredis($id)
+ {
+  $query = RedisWarehouse::findOne($id);
+  $query->delete();
+  return $this->goBack('showredis');
+ }
+ //update mysql
+ public function actionUpdateredis($id)
+ {
+  $query = RedisWarehouse::findOne($id);
+  return $this->render('redis/updateredis', ['query' => $query]);
+ }
+ public function actionSuccessredis($id)
+ {
+  $model = RedisWarehouse::findOne($id);
+  
+  $data=Yii::$app->request->post();
+  $model->vendor=$data['vendor'];
+   
+  $model->measuare=$data['measuare'];
+  $model->container=$data['container'];
+  $model->receiving=$data['receiving'];
+  $model->styno=$data['styno'];
+
+  $model->uom=$data['uom'];
+  $model->prefix=$data['prefix'];
+  $model->sufix=$data['sufix'];
+  $model->height=$data['height'];
+  $model->width=$data['width'];
+  $model->length=$data['length'];
+  $model->wieght=$data['wieght'];
+  $model->upc=$data['upc'];
+  $model->size1=$data['size1'];
+  $model->color1=$data['color1'];
+  $model->size2=$data['size2'];
+  $model->color2=$data['color2'];
+  $model->size3=$data['size3'];
+  $model->color3=$data['color3'];
+
+  $model->carton=$data['carton'];
+  $model->date=$data['date'];
+ 
+  $model->update();
+  
+  if ($model->update() !== false) {
+    $mess='Update thanh cong';
+      return $this->compact($mess)->goBack('show');
+  } else {
+      $errors = $model->errors;
+      $query = RedisWarehouse::findOne($id);
+      return $this->render('updateredis',['errors' =>$errors,'query' => $query,]);
+           
+  }
+ }
 }

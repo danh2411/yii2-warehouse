@@ -1,4 +1,4 @@
- <?php
+<?php
 
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -8,15 +8,15 @@ use yii\helpers\Html;
 
 
 
- <div class="report-index">
+<div class="report-index">
 
-     <?php if(isset($mess)){ ?>
-     <div class="alert alert-success" role="alert">
-         <?= $mess ?>
-     </div>
-     <?php } ?>
+    <?php if(isset($session)){ ?>
+    <div class="alert alert-success" role="alert">
+        <?= ($session->getFlash['success']); ?>
+    </div>
+    <?php } ?>
 
-     <?= GridView::widget(
+    <?= GridView::widget(
         
         [
         'dataProvider' => $dataProvider,
@@ -40,21 +40,21 @@ use yii\helpers\Html;
         
         'view' => function ($url, $model, $key) {
 
-            return  Html::a('View', 'viewmysql?id='.$model->id, ['class' => 'bg-pink  label']);
+            return  Html::a('View', 'viewredis?id='.$model->id, ['class' => 'bg-pink  label']);
 
         },
         'update' => function ($url, $model, $key) {
 
-            return  Html::a('Update', 'updatemysql?id='.$model->id, ['class' => 'bg-blue label']);
+            return  Html::a('Update', 'updateredis?id='.$model->id, ['class' => 'bg-blue label']);
 
         },
 
         'delete' => function ($url, $model, $key) {
           
-                Yii::t('backend', 'Are you sure you want to delete this item?');
+                Yii::t('backend/views/warehouse/redis', 'Are you sure you want to delete this item?');
             
            
-            return  Html::a('Delete', 'deletemysql?id='.$model->id, 
+            return  Html::a('Delete', 'deleteredis?id='.$model->id, 
             ['class' => 'bg-red label',     'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
@@ -68,4 +68,4 @@ use yii\helpers\Html;
       
     ]); ?>
 
- </div>
+</div>

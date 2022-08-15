@@ -26,15 +26,15 @@ use yii\helpers\Html;
                         <div class="input-group input-group-sm mb-3">
                             <span class="input-group-text" id="inputGroup-sizing-sm">Vendor:</span>
                             <select id="vendor" name="vendor">
-                                <option value="Victory_Aicraft">Victory Aicraft</option>
-                                <option value="Maria_Ozawa">Maria Ozawa</option>
+                                <option value="Victory Aicraft">Victory Aicraft</option>
+                                <option value="Maria Ozawa">Maria Ozawa</option>
                                 <option value="Tokuda">Tokuda</option>
 
                             </select>
-                            <?php if(isset($errors['container']))
+                            <?php if(isset($errors['vendor']))
                             {?>
                             <div class="px-2 text-danger">
-                                <?php  foreach($errors['container'] as $error){echo $error;} ?>
+                                <?php  foreach($errors['vendor'] as $error){echo $error;} ?>
                             </div>
 
 
@@ -178,6 +178,9 @@ use yii\helpers\Html;
                 <div id="row">
                     <a href="/warehouse/show">viewMysql</a>
                 </div>
+                <div id="row">
+                    <a href="/warehouse/showredis">viewRedis</a>
+                </div>
     </form>
     <!-- endsubmit -->
 </div>
@@ -186,25 +189,6 @@ use yii\helpers\Html;
 
 </div>
 <script>
-// const idsomeThing = [
-//     'styleno',
-//     'uom',
-//     'prefix',
-//     'sufix',
-//     'height',
-//     'width',
-//     'lenght',
-//     'weight',
-//     'upc',
-//     'size1',
-//     'color1',
-//     'size2',
-//     'color2',
-//     'szie3',
-//     'color3',
-//     'carton',
-
-// ]
 function myFunction() {
     const someThing = [
         'styno',
@@ -240,8 +224,8 @@ function myFunction() {
 
             for (let i = 0; i < 16; i++) {
                 var cell1 = row.insertCell(i);
-
-                cell1.innerHTML = " <input  name='" + someThing[i] + j + "' value=''/>";
+                cell1.innerHTML = "  <?= $form->field($model, 'name') ?>";
+                // cell1.innerHTML = " <input  name='" + someThing[i] + j + "' value=''/>";
 
             }
         }
@@ -264,25 +248,4 @@ buttonRemove.onclick = function() {
     window.location.reload();
 
 }
-//
-
-
-// const buttonSubmit = document.getElementById("submit");
-// buttonSubmit.onclick = () => {
-//     // const  vendor = document.getElementsByClassName("styleno").value
-//     // let styleno = document.getElementsById("styleno0").value
-//     // console.log(styleno);
-//     // $.ajax({
-//     //     type: "POST",
-//     //     url: "/warehouse/insert", // nhập link của trang xử lí dữ liệu
-//     //     data: "vendor=" + vendor + "&styleno=" + styleno,
-//     //     success: function(data) {
-//     //         setTimeout(function() {
-//     //             $('.message_box').html(data);
-//     //         }, delay);
-//     //         location.reload();
-//     //     }
-//     // });
-
-// };
 </script>
