@@ -10,9 +10,9 @@ use yii\helpers\Html;
 
 <div class="report-index">
 
-    <?php if(isset($session)){ ?>
+    <?php $language = isset($_SESSION['successredis']) ? $_SESSION['successredis'] : null; if($language!==null) { ?>
     <div class="alert alert-success" role="alert">
-        <?= ($session->getFlash['success']); ?>
+        <?php echo $language; ?>
     </div>
     <?php } ?>
 

@@ -88,7 +88,7 @@ class WarehouseController extends Controller
                 $modelredis->save();
             }
             
-            Yii::$app->session->setFlash('success','Thêm thành công.');
+            Yii::$app->session->setFlash('successinsert','Thêm thành công.');
             return $this->goback('index');
             }
         else {
@@ -221,11 +221,11 @@ class WarehouseController extends Controller
  {
   $query = RedisWarehouse::findOne($id);
   $query->delete();
-  Yii::$app->session->setFlash('success','Delete Success.'.$id);
+  Yii::$app->session->setFlash('successredis','Delete Success.'.$id);
 
   return $this->goBack('showredis');
  }
- //update mysql
+ //update redis
  public function actionUpdateredis($id)
  {
   $query = RedisWarehouse::findOne($id);
@@ -264,13 +264,13 @@ class WarehouseController extends Controller
   $model->update();
   
   if ($model->update() !== false) {
-    Yii::$app->session->setFlash('success','Delete Success.'.$id);
+    Yii::$app->session->setFlash('successredis','Update Success.'.$id);
 
-      return $this->goBack('show');
+      return $this->goBack('showredis');
   } else {
       $errors = $model->errors;
       $query = RedisWarehouse::findOne($id);
-      return $this->render('updateredis',['errors' =>$errors,'query' => $query,]);
+      return $this->render('redisupdateredis',['errors' =>$errors,'query' => $query,]);
            
   }
  }

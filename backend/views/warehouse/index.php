@@ -12,7 +12,7 @@ use yii\helpers\Html;
     <form method="post" action="/warehouse/insert">
 
         <div class="row">
-            <?php $language = isset($_SESSION['success']) ? $_SESSION['success'] : null; if($language!==null) { ?>
+            <?php $language = isset($_SESSION['successinsert']) ? $_SESSION['successinsert'] : null; if($language!==null) { ?>
             <div class="alert alert-success" role="alert">
                 <?php echo $language; ?>
             </div>
@@ -213,8 +213,7 @@ function myFunction() {
 
     const amountRow = document.getElementById('amountRow');
 
-    console.log(rowCount + 'rows');
-    console.log(amountRow.value);
+
     if (rowCount <= amountRow.value) {
         const index = amountRow.value - rowCount
 
