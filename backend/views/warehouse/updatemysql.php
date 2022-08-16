@@ -129,7 +129,7 @@ use yii\helpers\Html;
                     <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text" id="inputGroup-sizing-sm">Date</span>
                         <input type="datetime-local" class="form-control" aria-label="Sizing example input" name="date"
-                            id="date" aria-describedby="inputGroup-sizing-sm">
+                            id="date" aria-describedby="inputGroup-sizing-sm" value="<?php echo $query['date']; ?>">
 
                     </div>
                     <?php if(isset($errors['date']))

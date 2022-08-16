@@ -12,12 +12,11 @@ use yii\helpers\Html;
     <form method="post" action="/warehouse/insert">
 
         <div class="row">
-            <?php if(isset($mess)){ ?>
+            <?php $language = isset($_SESSION['success']) ? $_SESSION['success'] : null; if($language!==null) { ?>
             <div class="alert alert-success" role="alert">
-                <?= $mess ?>
+                <?php echo $language; ?>
             </div>
-
-            <?php  }?>
+            <?php } ?>
 
             <div class="container">
                 <div class="row">
@@ -224,8 +223,8 @@ function myFunction() {
 
             for (let i = 0; i < 16; i++) {
                 var cell1 = row.insertCell(i);
-                cell1.innerHTML = "  <?= $form->field($model, 'name') ?>";
-                // cell1.innerHTML = " <input  name='" + someThing[i] + j + "' value=''/>";
+
+                cell1.innerHTML = " <input  name='" + someThing[i] + j + "' value=''/>";
 
             }
         }

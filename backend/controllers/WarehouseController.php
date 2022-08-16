@@ -22,7 +22,7 @@ class WarehouseController extends Controller
   if (isset($_POST)) {
          $data=Yii::$app->request->post();
         
-
+         $model=new WarehouseForm();
     for($i=0;$i< (int)($data['amountRow']);$i++){
         $model=new WarehouseForm();
         $model->vendor=$data['vendor'];
@@ -88,8 +88,9 @@ class WarehouseController extends Controller
                 $modelredis->save();
             }
             
-                $mess='them thanh cong!!';
-                return $this->render('index',['mess' =>$mess]);}
+            Yii::$app->session->setFlash('success','Thêm thành công.');
+            return $this->goback('index');
+            }
         else {
             
             $errors = $model->errors;
@@ -126,7 +127,7 @@ class WarehouseController extends Controller
             return $this->goBack('show');
         }
        
-      
+    
       return $this->render('viewmysql', ['model' => $model]);
   }
   //delete mysql
@@ -134,6 +135,7 @@ class WarehouseController extends Controller
        {
         $query = WarehouseForm::findOne($id);
         $query->delete();
+        Yii::$app->session->setFlash('success','Delete Success.'.$id);
         return $this->goBack('show');
        }
     //update mysql
@@ -176,6 +178,7 @@ class WarehouseController extends Controller
         
         if ($model->update() !== false) {
             Yii::$app->session->setFlash('success','Update Success.'.$id);
+
             return $this->goBack('show');
         } else {
             $errors = $model->errors;
@@ -218,6 +221,8 @@ class WarehouseController extends Controller
  {
   $query = RedisWarehouse::findOne($id);
   $query->delete();
+  Yii::$app->session->setFlash('success','Delete Success.'.$id);
+
   return $this->goBack('showredis');
  }
  //update mysql
@@ -259,8 +264,9 @@ class WarehouseController extends Controller
   $model->update();
   
   if ($model->update() !== false) {
-    $mess='Update thanh cong';
-      return $this->compact($mess)->goBack('show');
+    Yii::$app->session->setFlash('success','Delete Success.'.$id);
+
+      return $this->goBack('show');
   } else {
       $errors = $model->errors;
       $query = RedisWarehouse::findOne($id);

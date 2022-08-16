@@ -13911,3 +13911,4 @@ $_SERVER = [
     'GLIDE_MAX_IMAGE_SIZE' => '4000000',
     'COMPOSE_CONVERT_WINDOWS_PATHS' => '1',
 ]" while reading upstream, client: 172.20.0.1, server: cms.yii2.local, request: "POST /warehouse/successredis?id=2 HTTP/1.1", upstream: "fastcgi://172.20.0.4:9000", host: "backend.yii2-starter-kit.localhost", referrer: "http://backend.yii2-starter-kit.localhost/warehouse/updateredis?id=2"
+2022/08/16 01:53:54 [error] 33#33: *6 FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream, client: 172.20.0.1, server: cms.yii2.local, request: "GET /phpmyadmin/index.php HTTP/1.1", upstream: "fastcgi://172.20.0.4:9000", host: "localhost"
