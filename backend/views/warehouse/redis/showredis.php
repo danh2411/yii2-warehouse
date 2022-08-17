@@ -12,7 +12,7 @@ use yii\helpers\Html;
 
     <?php $language = isset($_SESSION['successredis']) ? $_SESSION['successredis'] : null; if($language!==null) { ?>
     <div class="alert alert-success" role="alert">
-        <?php echo $language; ?>
+        <?php echo $language;unset($_SESSION['successredis']); ?>
     </div>
     <?php } ?>
 
@@ -32,11 +32,11 @@ use yii\helpers\Html;
             'styno',
             // 'created_by',
 
-           [ 'class' => 'yii\grid\ActionColumn',
+           ['class' => 'yii\grid\ActionColumn',
 
-    'template' => '{view} {update} {delete}',
+             'template' => '{view} {update} {delete}',
 
-    'buttons' => [
+               'buttons' => [
         
         'view' => function ($url, $model, $key) {
 
@@ -54,18 +54,21 @@ use yii\helpers\Html;
                 Yii::t('backend/views/warehouse/redis', 'Are you sure you want to delete this item?');
             
            
-            return  Html::a('Delete', 'deleteredis?id='.$model->id, 
-            ['class' => 'bg-red label',     'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],]);
+                return  Html::a('Delete', 'delete?id='.$model->id, 
+                ['class' => 'bg-red label',     'data' => [
+                    'confirm' => 'Are you sure you want to delete this item?',
+                    'method' => 'post',
+                ],]);
 
-        }
+          }
 
-    ]
-           ]
+        ]
+   ]
+          
 ],
       
     ]); ?>
-
+    <div id="row">
+        <a href="/warehouse/show">viewMysql</a>
+    </div>
 </div>

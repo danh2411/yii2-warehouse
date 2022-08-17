@@ -12,7 +12,7 @@ use yii\helpers\Html;
 
      <?php $language = isset($_SESSION['success']) ? $_SESSION['success'] : null; if($language!==null) { ?>
      <div class="alert alert-success" role="alert">
-         <?php echo $language; ?>
+         <?php echo $language;unset($_SESSION['success']); ?>
      </div>
      <?php } ?>
 
@@ -20,7 +20,7 @@ use yii\helpers\Html;
         
         [
         'dataProvider' => $dataProvider,
-        //'filterModel' => $searchModel,
+       
         
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
@@ -30,11 +30,11 @@ use yii\helpers\Html;
             'container',
             'receiving',
             'styno',
-            // 'created_by',
+         
 
            [ 'class' => 'yii\grid\ActionColumn',
 
-    'template' => '{view} {update} {delete}',
+    'template' => '{view}   {update}   {delete}',
 
     'buttons' => [
         
@@ -45,7 +45,7 @@ use yii\helpers\Html;
         },
         'update' => function ($url, $model, $key) {
 
-            return  Html::a('Update', 'updatemysql?id='.$model->id, ['class' => 'bg-blue label']);
+            return  Html::a('Update', 'update?id='.$model->id, ['class' => 'bg-blue label']);
 
         },
 
@@ -54,10 +54,11 @@ use yii\helpers\Html;
                 Yii::t('backend', 'Are you sure you want to delete this item?');
             
            
-            return  Html::a('Delete', 'deletemysql?id='.$model->id, 
-            ['class' => 'bg-red label',     'data' => [
+            return  Html::a('Delete', 'delete?id='.$model->id, 
+            ['class' => 'bg-red bi bi-trash3',     'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
+                
             ],]);
 
         }
@@ -67,5 +68,7 @@ use yii\helpers\Html;
 ],
       
     ]); ?>
-
+     <div id="row">
+         <a href="/warehouse/showredis">viewRedis</a>
+     </div>
  </div>

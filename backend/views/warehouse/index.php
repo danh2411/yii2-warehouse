@@ -14,7 +14,7 @@ use yii\helpers\Html;
         <div class="row">
             <?php $language = isset($_SESSION['successinsert']) ? $_SESSION['successinsert'] : null; if($language!==null) { ?>
             <div class="alert alert-success" role="alert">
-                <?php echo $language; ?>
+                <?php echo $language; unset($_SESSION['successinsert']); ?>
             </div>
             <?php } ?>
 
